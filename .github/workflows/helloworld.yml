@@ -1,7 +1,13 @@
 name: Hello World
 
-on: 
+on:
   workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: environment
+        description: '環境を選択してください (develop / staging / production)'
+        default: 'staging'
 
 jobs:
   say_hello:
