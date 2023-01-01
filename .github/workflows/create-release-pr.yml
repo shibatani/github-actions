@@ -36,8 +36,6 @@ jobs:
         run: npm install -g zx
 
       - name: 'create prs'
-        uses: actions/checkout@v3
-
         run: zx ./scripts/createPullRequest.mjs --env ${{ github.event.inputs.environment }}
         env:
           TOKEN: ${{ steps.generate_token.outputs.token }}
