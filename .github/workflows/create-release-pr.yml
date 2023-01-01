@@ -6,7 +6,7 @@ on:
       environment:
         required: true
         description: '環境を選択してください (develop / staging / production)'
-        type: choice
+        type: choice  
         options:
           - "develop"
           - "staging"
@@ -36,6 +36,11 @@ jobs:
         run: npm install -g zx
 
       - name: 'create prs'
+        uses: actions/checkout@v3
+        with:
+          repository: shibatani/github-actions
+          token: ${{ steps.generate_token.outputs.token }}
+
         run: zx ./scripts/createPullRequest.mjs --env ${{ github.event.inputs.environment }}
         env:
           TOKEN: ${{ steps.generate_token.outputs.token }}
