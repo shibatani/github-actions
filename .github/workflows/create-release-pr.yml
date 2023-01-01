@@ -40,7 +40,6 @@ jobs:
       - name: 'create prs'
         run: zx ./scripts/createPullRequest.mjs --env ${{ github.event.inputs.environment }}
         env:
-          GH_TOKEN: ${{ github.token }}
-          TOKEN: ${{ steps.generate_token.outputs.token }}
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
 
   # 後でSlck通知用のステップも追加する。
