@@ -25,7 +25,7 @@ jobs:
         uses: tibdex/github-app-token@v1
         with:
           app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.CLIENT_ID}}
+          private_key: ${{ secrets.CLIENT_ID }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
