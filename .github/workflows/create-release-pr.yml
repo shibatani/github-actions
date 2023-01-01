@@ -37,9 +37,6 @@ jobs:
 
       - name: 'create prs'
         uses: actions/checkout@v3
-        with:
-          repository: shibatani/github-actions
-          token: ${{ steps.generate_token.outputs.token }}
 
         run: zx ./scripts/createPullRequest.mjs --env ${{ github.event.inputs.environment }}
         env:
