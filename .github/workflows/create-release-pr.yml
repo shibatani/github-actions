@@ -1,0 +1,39 @@
+name: Create Release PRs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: environment
+        description: '環境を選択してください (develop / staging / production)'
+        default: 'develop'
+
+jobs:
+  create_release_prs:
+    strategy:
+      matrix:
+        node-version: [16.x]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.CRIENT_ID }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install zx
+        run: npm install -g zx
+
+      - name: 'create prs'
+        run: zx ./scripts/createPullRequest.mjs --env ${{ github.event.inputs.environment }}
+        env:
+          TOKEN: ${{ steps.generate_token.outputs.token }}
+
+  # 後でSlck通知用のステップも追加する。

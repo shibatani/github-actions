@@ -1,0 +1,23 @@
+{
+  "name": "workhub-release",
+  "version": "1.0.0",
+  "description": "workhub のリリースのためのリポジトリです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitkey-service/workhub-release.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitkey-service/workhub-release/issues"
+  },
+  "homepage": "https://github.com/bitkey-service/workhub-release#readme",
+  "type": "module",
+  "dependencies": {
+    "zx": "^7.1.1"
+  }
+}
